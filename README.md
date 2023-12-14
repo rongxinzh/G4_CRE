@@ -1,1 +1,1 @@
-# G4_CRE
+### Hi! This repository is for our research project on G-quadruplex and cis-regulatory elements.
