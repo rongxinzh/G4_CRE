@@ -1,1 +1,11 @@
-### Hi! This repository is for our research project on G-quadruplex and cis-regulatory elements.
+#### This repository is for the research project on G-quadruplex and *cis*-regulatory elements.
+
+📁 Script folder: Source code used for data analysis in the project, based on the R language.
+G4Hunter_w25_s1.5_hg38.txt: All potential G-quadruplexes in the human genome predicted by the G4Hunter software. 
+							Genome assembly: hg38. 
+							G4Hunter software parameters were set as follows: score threshold 1.5, window size 25.
+G4_cCRE_annotation.txt: Annotation on whether the candidate *cis*-regulatory elements (cCREs, from https://screen.encodeproject.org/) contain G4s.
+
+Citations:
+[1] Puig Lombardi, Emilia, and Arturo Londoño-Vallejo. “A guide to computational methods for G-quadruplex prediction.” Nucleic acids research vol. 48,1 (2020): 1-15. doi:10.1093/nar/gkz1097
+[2] ENCODE Project Consortium et al. “Expanded encyclopaedias of DNA elements in the human and mouse genomes.” Nature vol. 583,7818 (2020): 699-710. doi:10.1038/s41586-020-2493-4
