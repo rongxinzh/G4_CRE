@@ -49,6 +49,10 @@ G4.phylop.group <- bind_rows(data.frame(score = G4.phylop.group %>% filter(PLS >
                              data.frame(score = G4.phylop.group %>% filter(CTCF.only > 0) %>% select(score.y) %>% data.frame() %>% unlist(), group = "CTCF-only G4s"), 
                              data.frame(score = G4.phylop.group %>% filter(DNase.H3K4me3 > 0) %>% select(score.y) %>% data.frame() %>% unlist(), group = "DNase-H3K4me3 G4s"), 
                              data.frame(score = G4.phylop.group %>% filter(overlap_count == 0) %>% select(score.y) %>% data.frame() %>% unlist(), group = "Other G4s"))
+G4.phylop.group$group <- factor(G4.phylop.group$group, levels = unique(G4.phylop.group$group))
+kruskal.test(score ~ group, data = G4.phylop.group)$p.value
+
+pairwise.wilcox.test(G4.phylop.group$score, G4.phylop.group$group)$p.value
 
 fig <- ggerrorplot(G4.phylop.group, x = "group", y = "score", add = "mean_sd", color = "group",  ylab = "phyloP score",
                    palette = c("#e64b35", "#4ebad5", "#049f87", "#3c5488", "#f49b7f", "#7d6148")) +
@@ -119,4 +123,3 @@ fig <- ggerrorplot(G4.RLvalue, x = "cCRE", y = "score", add = "mean_sd", color =
                    palette = c("#b22222", "#7aa6dd")) +
        rremove("xlab") + rremove("legend.title") + rotate_x_text(90)
 ggsave("../figure/constrained/phyloP/phyloP_GRuns_G4_nonG4Runs.pdf", fig, width = 5, height = 5)
-

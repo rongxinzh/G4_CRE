@@ -220,8 +220,6 @@ fig <- ggplot(hepg2.mat, aes(x = window, y = density, group = group)) +
   	   rremove("xlab") + rremove("legend.title") + ylab("Density (HepG2 G4 ChIP-seq)") 
 ggsave("../figure/enrich/CTCF_bound_density_HepG2.pdf", fig, width = 12, height = 2.2)
 
-
-
 p1 <- ggplot(data.frame(density = colMeans(data.frame(mat.k562.ctcfonly)), window = (-(1000/10):(1000/10))), 
 						 aes(x = window, y = density)) +
   	  geom_line(linewidth = 0.8) +

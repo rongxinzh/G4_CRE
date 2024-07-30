@@ -31,6 +31,10 @@ G4.zscore <- bind_rows(
     data.frame(zscore = G4.gnomad %>% filter(overlap_count == 0) %>% select(gnomad.score) %>% unlist(), group = "Other G4s"))
 G4.zscore$group <- factor(G4.zscore$group, levels = unique(G4.zscore$group))
 
+kruskal.test(zscore ~ group, data = G4.zscore)$p.value
+
+pairwise.wilcox.test(G4.zscore$zscore, G4.zscore$group)$p.value
+
 pdf("../figure/gnomAD/G4_zscores.pdf", width = 3, height = 4)
 ggplot(G4.zscore, aes(group, zscore)) + 
   geom_boxplot(aes(fill = group), show.legend = FALSE, width = 0.5) +
@@ -49,7 +53,6 @@ ccre.zscore <- data.frame(zscore = ccre.gnomad$gnomad.score, cCRE = ccre.gnomad$
 ccre.zscore$group <- ifelse(ccre.zscore$group > 0, "G4 cCREs", "Other cCREs")
 ccre.zscore$cCRE <- factor(ccre.zscore$cCRE, levels = c("PLS", "pELS", "dELS", "CTCF-only", "DNase-H3K4me3"))
 
-#
 wilcox.test(ccre.zscore %>% filter((cCRE == "DNase-H3K4me3") & (group == "G4 cCREs")) %>% select(zscore) %>% unlist(), 
             ccre.zscore %>% filter((cCRE == "DNase-H3K4me3") & (group == "Other cCREs")) %>% select(zscore) %>% unlist())$p.value
 

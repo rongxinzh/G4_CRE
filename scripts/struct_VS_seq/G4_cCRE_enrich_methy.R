@@ -97,9 +97,6 @@ k562.methy.score <- bind_rows(
                       data.frame(value = log2(nonk562.pG4.dels.methy$score + 1), cCRE = "dELS", group = "other pG4s", cell = "K562")
                     )
 
-# p val
-# 1.122563e-34 1.187214e-52 4.638221e-112
-
 ggsave("../figure/cellline_valid/k562_methy.pdf",
   ggboxplot(k562.methy.score, "cCRE", "value", fill = "group", palette = c("#f05c3b", "#8a9097"), width = 0.5) + 
   rremove("xlab") + rremove("legend.title") + ylab("Methylation signals(log2)"), width = 4, height = 2.5)
@@ -112,14 +109,7 @@ hepg2.methy.score <- bind_rows(
                       data.frame(value = log2(hepg2.pG4.dels.methy$score + 1), cCRE = "dELS", group = "G4 ChIP-seq supported pG4s", cell = "HepG2"),
                       data.frame(value = log2(nonhepg2.pG4.dels.methy$score + 1), cCRE = "dELS", group = "other pG4s", cell = "HepG2")
                     )
-# p val
-# 2.242466e-08 6.016366e-17 4.283506e-41
 
 ggsave("../figure/cellline_valid/hepg2_methy.pdf",
   ggboxplot(hepg2.methy.score, "cCRE", "value", fill = "group", palette = c("#f05c3b", "#8a9097"), width = 0.5) + 
   rremove("xlab") + rremove("legend.title") + ylab("Methylation signals(log2)"), width = 4, height = 2.5)
-
-#wilcox.test(hepg2.pG4.dels.methy$score, nonhepg2.pG4.dels.methy$score, alternative = "less")
-
-
-

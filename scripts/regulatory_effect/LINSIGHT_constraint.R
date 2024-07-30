@@ -53,6 +53,10 @@ G4.lins.score <- bind_rows(data.frame(score = G4.value %>% filter(PLS == 1) %>% 
                            data.frame(score = G4.value %>% filter(overlap_count == 0) %>% select(score.x) %>% unlist(), group = "Other-G4s", G4score = G4.value %>% filter(overlap_count == 0) %>% select(max_score) %>% unlist() %>% abs()))
 G4.lins.score$group <- factor(G4.lins.score$group, level = unique(G4.lins.score$group))
 
+kruskal.test(score ~ group, data = G4.lins.score)$p.value
+
+pairwise.wilcox.test(G4.lins.score$score, G4.lins.score$group)$p.value
+
 fig <- ggerrorplot(G4.lins.score, x = "group", y = "score", add = "mean_sd", color = "group",  ylab = "LINSIGHT score",
                    palette = c("#e64b35", "#4ebad5", "#049f87", "#3c5488", "#f49b7f", "#7d6148")) +
        rremove("xlab") + rremove("legend") + rotate_x_text(90)
@@ -98,7 +102,6 @@ fig <- ggerrorplot(Runs.value, x = "group", y = "score", add = "mean_sd", color 
        facet_wrap(vars(encodeLabel), ncol = 5)
 ggsave("../figure/LINSIGHT/LINSIGHTscore_G4Runs_VS_cCRERuns.pdf", fig, width = 7, height = 5.86)
 
-
 G4.Runs.filter <- bt.intersect(a = G4.Runs, b = G4 %>% filter(overlap_count > 1), wa = TRUE, v = TRUE) %>% unique() %>% data.frame()
 colnames(G4.Runs.filter)[7] <- "id"
 G4.use.ccre <- bt.intersect(a = G4 %>% filter(overlap_count == 1), b = ccre, wb = TRUE) %>% unique() %>% data.frame() 
@@ -128,4 +131,3 @@ fig <- ggerrorplot(G4.RLvalue, x = "group", y = "score", add = "mean_sd", color 
        rremove("xlab") + rremove("legend") + rotate_x_text(90) + 
        facet_wrap(vars(cCRE), ncol = 5)
 ggsave("../figure/LINSIGHT/LINSIGHTscore_G4Runs_VS_G4Loop.pdf", fig, width = 7, height = 6)
-

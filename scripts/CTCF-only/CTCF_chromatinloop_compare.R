@@ -38,7 +38,7 @@ GrData <- function(data = NULL, center = TRUE) {
 }
 
 # load ccre
-ccre <- fread("./G4_cCRE_annotation.txt", sep = "\t", header = TRUE) %>% data.frame() %>% filter(chr %in% paste0("chr", c(1:22, "X")))
+ccre <- fread("../data/ccre/V3/G4_cCRE_annotation.txt", sep = "\t", header = TRUE) %>% data.frame() %>% filter(chr %in% paste0("chr", c(1:22, "X")))
 ctcf.ccre <- ccre[str_detect(ccre$ccre, "CTCF-bound"),]
 ctcfonly.ccre <- ctcf.ccre[str_detect(ctcf.ccre$ccre, "CTCF-only,CTCF-bound"),]
 ctcfonly.ccre.gr <- GrData(ctcfonly.ccre, center = TRUE)

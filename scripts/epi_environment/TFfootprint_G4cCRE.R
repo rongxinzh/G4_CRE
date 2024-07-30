@@ -98,3 +98,5 @@ p3 <- ggplot(mat3, aes(x = range, y = value, group = group)) +
       theme_classic() + rremove("xlab") + ylab("TF binding density") + rremove("legend.title") +
       scale_color_manual(values = paletteer_d("ggthemes::excel_Main_Event"))
 ggsave("../figure/TF/remap_dELS_cCRE.pdf", p3, width = 4, height = 2.5)
+
+# save(list=ls(), file = "./TFfootprint_G4cCRE.RData")

@@ -158,14 +158,6 @@ mat$group <- factor(mat$group, levels = unique(mat$group))
 mat$cell <- factor(mat$cell, levels = unique(mat$cell))
 mat$anno <- factor(mat$anno, levels = unique(mat$anno))
 
-pdf("../figure/cellline_valid/G4_proportion_density_fold.pdf", height = 6, width = 5)
-ggplot(mat, aes(x = group, y = fold, fill = anno)) + ylab('Proportion of G4s in activated cCREs') +
-  geom_boxplot() +
-  facet_wrap(vars(cell), nrow = 2) +
-  scale_fill_manual(values = c("#f05c3b", "#8a9097")) +
-  labs(fill = 'Estimation for') + rremove("xlab")# + theme(legend.position = "top", legend.direction = "vertical")
-dev.off()
-
 pdf("./G4_proportion_density_fold.pdf", height = 4.5, width = 8)
 ggplot(mat, aes(x = fold, fill = anno)) + 
 geom_histogram(colour = "black",
@@ -178,9 +170,4 @@ theme(legend.position = "top", legend.direction = "horizontal") +
 rremove("legend.title") + 
 facet_grid(cell ~ group, scales='free')
 dev.off()
-
-
-
-
-
 

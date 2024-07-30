@@ -133,110 +133,14 @@ p1 <- ggplot(all.data %>% filter(cell == "K562"), aes(x = range, y = value, grou
       geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
       theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
       ylab("cCRE density") + rremove("legend.title") + facet_wrap(vars(support, cCRE), scales = "free") + 
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
+      scale_color_manual(values = c("#B22C2C", "#2C85B2"))
 
 p2 <- ggplot(all.data %>% filter(cell == "HepG2"), aes(x = range, y = value, group = group, color = group)) +
       geom_line() +
       geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
       theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
       ylab("cCRE density") + rremove("legend.title") + facet_wrap(vars(support, cCRE), scales = "free") + 
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
+      scale_color_manual(values = c("#B22C2C", "#2C85B2"))
 
 ggsave(filename = "../figure/cellline_valid/K562_pG4_cCRE.pdf", p1, device = "pdf", width = 8, height = 5)
 ggsave(filename = "../figure/cellline_valid/HepG2_pG4_cCRE.pdf", p2, device = "pdf", width = 8, height = 5)
-
-
-
-p1 <- ggplot(k562.pls.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-p2 <- ggplot(nonk562.pls.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-p3 <- ggplot(k562.pels.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-p4 <- ggplot(nonk562.pels.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-p5 <- ggplot(k562.dels.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-p6 <- ggplot(nonk562.dels.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-p7 <- ggplot(hepg2.pls.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-p8 <- ggplot(nonhepg2.pls.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-p9 <- ggplot(hepg2.pels.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-p10 <- ggplot(nonhepg2.pels.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-p11 <- ggplot(hepg2.dels.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-p12 <- ggplot(nonhepg2.dels.mat, aes(x = range, y = value, group = group, color = group)) +
-      geom_line() +
-      geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
-      theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
-      ylab("cCRE density") + rremove("legend.title") +
-      scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
-
-ggsave(filename = "dqw1212dqw.pdf", ggarrange(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, nrow = 2, ncol = 6), device = "pdf", width = 15, height = 5)
-
-
-
-
-
-
-
-

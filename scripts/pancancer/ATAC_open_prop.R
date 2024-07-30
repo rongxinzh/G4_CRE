@@ -52,4 +52,3 @@ ggsave("../figure/pancancer/openregion_proportion.pdf",
   facet_wrap(vars(cCRE), ncol = 5, scales = "free"), 
   width = 20, height = 3.5)
 
-

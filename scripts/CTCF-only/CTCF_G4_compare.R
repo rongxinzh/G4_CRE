@@ -27,14 +27,14 @@ GrData <- function(data = NULL, center = TRUE) {
 }
 
 # load ccre
-ccre <- fread("./G4_cCRE_annotation.txt", sep = "\t", header = TRUE) %>% data.frame() %>% filter(chr %in% paste0("chr", c(1:22, "X")))
+ccre <- fread("../data/ccre/V3/G4_cCRE_annotation.txt", sep = "\t", header = TRUE) %>% data.frame() %>% filter(chr %in% paste0("chr", c(1:22, "X")))
 ctcf.ccre <- ccre[str_detect(ccre$ccre, "CTCF-bound"),]
 ctcfonly.ccre <- ctcf.ccre[str_detect(ctcf.ccre$ccre, "CTCF-only,CTCF-bound"),]
 ctcfonly.ccre.gr <- GrData(ctcfonly.ccre, center = TRUE)
 ctcfother.ccre <- ctcf.ccre[!str_detect(ctcf.ccre$ccre, "CTCF-only,CTCF-bound"),]
 ctcfother.ccre.gr <- GrData(ctcfother.ccre, center = TRUE)
 
-G4 <- fread("./cCRE_G4_annotation.txt", sep = "\t", header = TRUE) %>% data.frame()
+G4 <- fread("../data/G4/cCRE_G4_annotation.txt", sep = "\t", header = TRUE) %>% data.frame()
 G4.gr <- GrData(G4, center = FALSE)
 
 extend.width <- 1000
@@ -61,4 +61,3 @@ p <- ggplot(mat, aes(x = range, y = value, group = group)) +
      theme_classic() + rremove("xlab") + ylab("G4 density") + rremove("legend.title") +
      scale_color_manual(values = paletteer_d("ggthemes::excel_Main_Event"))
 ggsave("./G4_ctcf_hybrid_only.pdf", p, width = 5, height = 2.5)
-

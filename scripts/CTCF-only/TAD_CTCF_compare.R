@@ -59,7 +59,7 @@ for (tmp.tad in all.f) {
   	otc.ccre.c <- NULL
   	for (i in 1:1000) {
   	  tmp.otr.ccre <- ctcfother.ccre[sample(1:dim(ctcfother.ccre)[1], dim(ctcfonly.ccre)[1]), ]
-  	  tmp.otr.int <- bt.intersect(a = tmp.otr.ccre, b = tad.bdy, wa = TRUE) %>% unique()
+   	  tmp.otr.int <- bt.intersect(a = tmp.otr.ccre, b = tad.bdy, wa = TRUE) %>% unique()
   	  otc.ccre.c <- c(otc.ccre.c, nrow(tmp.otr.int))
   	}
   	tad.res <- bind_rows(tad.res, data.frame(file = tmp.tad, gt = (oly.ccre.c - mean(otc.ccre.c)) / sd(otc.ccre.c), extend = tmp.extend))
@@ -81,5 +81,3 @@ ht <- Heatmap(tad.mat, cluster_rows = FALSE, cluster_columns = TRUE, name = "Z-s
               show_column_names = TRUE, rect_gp = gpar(col = "white", lwd = 2))
 draw(ht)
 dev.off()
-
-

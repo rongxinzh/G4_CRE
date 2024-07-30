@@ -107,4 +107,3 @@ ggbarplot(act.mat, "ct", "p", color = "group", fill = "group",
           palette = paletteer_d("ggthemes::Classic_Traffic_Light"), position = position_dodge()) + 
 rotate_x_text(90) + ylab("Proportion (PROM activity > 1.5)") + rremove("xlab") + rremove("legend.title"), 
 width = 8, height = 3)
-

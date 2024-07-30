@@ -34,6 +34,10 @@ reg.G4.score <- bind_rows(data.frame(score = reg.G4 %>% filter(V27 == 1) %>% sel
                           data.frame(score = reg.G4 %>% filter(V32 == 0) %>% select(V6) %>% unlist(), group = "Other-G4s"))
 reg.G4.score$group <- factor(reg.G4.score$group, level = unique(reg.G4.score$group))
 
+kruskal.test(score ~ group, data = reg.G4.score)$p.value
+
+pairwise.wilcox.test(reg.G4.score$score, reg.G4.score$group)$p.value
+
 fig <- ggboxplot(data = reg.G4.score, x = 'group', y = 'score', fill = 'group', 
                  palette = c("#e64b35", "#4ebad5", "#049f87", "#3c5488", "#f49b7f", "#7d6148"), 
                  ylab = "RegulomeDB score", width = .5) + 
@@ -144,7 +148,6 @@ reg.ccreGRuns.score <- bind_rows(regdb.G4.Runs, reg.ccre.Runs)
 reg.ccreGRuns.score$cCRE <- factor(reg.ccreGRuns.score$cCRE, levels = c("PLS", "pELS", "dELS", "CTCF-only", "DNase-H3K4me3"))
 reg.ccreGRuns.score$group <- factor(reg.ccreGRuns.score$group, levels = c("G4 G-Runs", "cCRE G-Runs"))
 
-#
 wilcox.test(reg.ccreGRuns.score %>% filter(cCRE == "DNase-H3K4me3", group == "G4 G-Runs") %>% select(score) %>% unlist(),
             reg.ccreGRuns.score %>% filter(cCRE == "DNase-H3K4me3", group == "cCRE G-Runs") %>% select(score) %>% unlist())$p.value
 
@@ -164,4 +167,3 @@ fig <- ggplot(reg.ccreGRuns.rank, aes(fill = rank, y = count, x = group)) +
        scale_fill_manual(values = paletteer_d("ggthemes::Tableau_20")) +
        facet_wrap(vars(cCRE), ncol = 5)
 ggsave("../figure/RegulomeDB/regrank_G4Runs_VS_cCRERuns.pdf", fig, width = 8, height = 5)
-

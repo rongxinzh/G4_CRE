@@ -1,3 +1,4 @@
+# The code for this program originates from https://github.com/LacroixLaurent/G4Hunter/blob/master/seekG4hunt.r
 
 suppressMessages(require(S4Vectors))
 suppressMessages(require(GenomicRanges))
@@ -150,4 +151,3 @@ names(nx) <- NULL
 if (with.seq==F) {nx$sequence=NULL}
 return(nx)
 }
-

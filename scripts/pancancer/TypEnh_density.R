@@ -59,7 +59,6 @@ all.enh.files <- list.files("../data/pancEnh/typical_enhancer/")
 
 pan.atac.files <- list.files("../data/pancATAC/TCGA-ATAC_Cancer_Type-specific_PeakCalls/")
 
-#tissue.use <- intersect(str_split(pan.atac.files, "_",simplify = TRUE)[, 1], unique(str_split(all.enh.files, "_", simplify = TRUE)[, 1]))
 tissue.use <- ct.used
 
 mat <- NULL
@@ -113,7 +112,6 @@ p.f <- ggplot(mat %>% filter(cCRE == "pELS"), aes(x = range, y = value, group = 
        theme(legend.position="top") + 
        scale_color_manual(values = paletteer_d("ggthemes::excel_Main_Event")) +
        facet_wrap(vars(ct), scale = "free_y", ncol = 5) 
-       #facet_grid2(cCRE ~ ct, independent = "y", scales = "free") 
 ggsave("../figure/pancancer/typical_enhancer_density_pELS.pdf", p.f, width = 10, height = 4.5)
 
 d.f <- ggplot(mat %>% filter(cCRE == "dELS"), aes(x = range, y = value, group = group)) +
@@ -122,7 +120,6 @@ d.f <- ggplot(mat %>% filter(cCRE == "dELS"), aes(x = range, y = value, group = 
        theme(legend.position="top") + 
        scale_color_manual(values = paletteer_d("ggthemes::excel_Main_Event")) +
        facet_wrap(vars(ct), scale = "free_y", ncol = 5) 
-       #facet_grid2(cCRE ~ ct, independent = "y", scales = "free") 
 ggsave("../figure/pancancer/typical_enhancer_density_dELS.pdf", d.f, width = 10, height = 4.5)
 
 

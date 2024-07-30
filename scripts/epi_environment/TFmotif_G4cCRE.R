@@ -99,4 +99,17 @@ p3 <- ggplot(mat3, aes(x = range, y = value, group = group)) +
       scale_color_manual(values = paletteer_d("ggthemes::excel_Main_Event"))
 ggsave("../figure/TF/TFmotif_dELS_cCRE.pdf", p3, width = 4, height = 2.5)
 
+MergeMotif <- function() {
+
+  all.tfmotif.path <- list.files("../data/tf/all_tf/")
+  all.motif <- NULL
+
+  for (tmp.tfmotif.path in all.tfmotif.path) {
+    message(tmp.tfmotif.path)
+    tmp.motif <- fread(paste0("../data/tf/all_tf/", tmp.tfmotif.path), sep = "\t", header = FALSE) %>% data.frame()
+    fwrite(data.frame(tmp.motif, tf = str_split(tmp.tfmotif.path, "\\.", simplify = TRUE)[, 1]), 
+           "../data/tf/all_tfmotif.txt", sep = "\t", col.names = FALSE, row.names = FALSE, quote = FALSE, append = TRUE)
+  }
+}
+
 

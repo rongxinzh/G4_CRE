@@ -44,7 +44,6 @@ for (tmp.tp in c("PLS", "pELS", "dELS", "CTCF-only", "DNase-H3K4me3")) {
   message(tmp.tp)
   tmp.G4 <- G4 %>% filter(get(str_replace(tmp.tp, "-", ".")) == 1)
   tmp.G4.gr <- GrData(tmp.G4)
-  #tmp.ccre.G4 <- ccre %>% filter(encodeLabel == tmp.tp, contain_G4 == 1)
   tmp.ccre <- ccre %>% filter(encodeLabel == tmp.tp)
   tmp.ccre.gr <- GrData(tmp.ccre)  
 
@@ -64,11 +63,14 @@ for (tmp.tp in c("PLS", "pELS", "dELS", "CTCF-only", "DNase-H3K4me3")) {
         geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
         theme_classic() + rremove("xlab") + theme(legend.position = "top", legend.direction = "vertical") + 
         ylab("Constraint base density") + rremove("legend.title") +
-        scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
+        ##scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
+        scale_color_manual(values = c("#B22C2C", "#2C85B2"))
   ggsave(paste0("../figure/constrained/phyloP/phyloP_G4_cCRE_", tmp.tp, ".pdf"), p1, width = 4.5, height = 4)
 
 }
 
+extend.width <- 15
+width = 1
 
 round <- 100
 sample.n <- 1000
@@ -76,7 +78,6 @@ sample.n <- 1000
 for (tmp.tp in c("PLS", "pELS", "dELS", "CTCF-only", "DNase-H3K4me3")) {
 
   message(tmp.tp)
-  
   mat <- NULL
 
   tmp.G4.Runs <- G4.Runs %>% filter(encodeLabel == tmp.tp)
@@ -108,11 +109,11 @@ for (tmp.tp in c("PLS", "pELS", "dELS", "CTCF-only", "DNase-H3K4me3")) {
         geom_vline(xintercept = 0, linetype = "dotted", color = "grey", linewidth = 0.35) + 
         theme_classic() + rremove("xlab") + theme(legend.position="top", legend.direction = "vertical") + 
         ylab("Constraint base density") + rremove("legend.title") +
-        scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
+        ##scale_color_manual(values = paletteer_d("ggsci::default_aaas"))
+        scale_color_manual(values = c("#2C85B2", "#B22C2C"))
   ggsave(paste0("../figure/constrained/phyloP/phyloP_G4_cCRE_GRuns_", tmp.tp, ".pdf"), p1, width = 4.5, height = 4)
 
 }
-
 
 round <- 100
 sample.n <- 1000

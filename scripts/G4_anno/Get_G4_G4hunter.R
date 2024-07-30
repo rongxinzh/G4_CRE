@@ -5,10 +5,10 @@ library(stringr)
 library(Biostrings)
 source("./G4Hunter.R")
 
-chr.seq.path <- "../data/ref/hg38.fa.gz"
+chr.seq.path <- "../data/ref/hg38.fa"
 chr.used <- paste0("chr", c(1:22, "X"))
 window <- 25
-score <- 1.5
+score <- 1.2
 
 seq <- readBStringSet(chr.seq.path, format = "fasta", nrec = -1L, skip = 0L, seek.first.rec = FALSE, use.names = TRUE)
 seq <- data.frame(seq = as.vector(as.character(seq)), chr = str_split(names(seq), (" "), simplify = TRUE)[, 1])

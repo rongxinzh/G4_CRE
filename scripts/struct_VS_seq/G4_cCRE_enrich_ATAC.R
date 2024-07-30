@@ -97,8 +97,6 @@ k562.atac.score <- bind_rows(
                       data.frame(value = log2(nonk562.pG4.dels.atac$score + 1), cCRE = "dELS", group = "other pG4s", cell = "K562")
                     )
 
-# p val
-# 0 0 0
 ggsave("../figure/cellline_valid/k562_atac.pdf",
   ggboxplot(k562.atac.score, "cCRE", "value", fill = "group", palette = c("#f05c3b", "#8a9097"), width = 0.5) + 
   rremove("xlab") + rremove("legend.title") + ylab("ATAC signals(log2)"), width = 4, height = 2.5)
@@ -111,13 +109,7 @@ hepg2.atac.score <- bind_rows(
                       data.frame(value = log2(hepg2.pG4.dels.atac$score + 1), cCRE = "dELS", group = "G4 ChIP-seq supported pG4s", cell = "HepG2"),
                       data.frame(value = log2(nonhepg2.pG4.dels.atac$score + 1), cCRE = "dELS", group = "other pG4s", cell = "HepG2")
                     )
-# p val
-# 0 6.708371e-295 1.943439e-179
+
 ggsave("../figure/cellline_valid/hepg2_atac.pdf",
   ggboxplot(hepg2.atac.score, "cCRE", "value", fill = "group", palette = c("#f05c3b", "#8a9097"), width = 0.5) + 
   rremove("xlab") + rremove("legend.title") + ylab("ATAC signals(log2)"), width = 4, height = 2.5)
-
-#wilcox.test(hepg2.pG4.dels.atac$score, nonhepg2.pG4.dels.atac$score, alternative = "less")
-
-
-
