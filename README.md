@@ -1,3 +1,7 @@
+### Please note that this repository is no longer updated, please visit [Zenodo repository](https://zenodo.org/records/13147640) for updates.
+
+---
+
 ### This repository is for the research project on G-quadruplex and *cis*-regulatory elements.<br><br>
 
 **Script folder**: Source code used for data analysis in the project, based on the R language.<br><br>
@@ -6,7 +10,7 @@
 								G4Hunter software parameters were set as follows: score threshold 1.5, window size 25.<br><br>
 **G4_cCRE_annotation.txt**: Annotation on whether the candidate *cis*-regulatory elements (cCREs, from https://screen.encodeproject.org/) contain G4s.<br><br>
 
-**Manuscript for preprint**: [Zhang, R., Wang, Y., Wang, C., Sun, X., & Mergny, J.-L. (2024). G-quadruplexes as pivotal components of cis-regulatory elements in the human genome.](https://www.biorxiv.org/content/10.1101/2024.01.02.573847v1.full)<br><br>
+**Manuscript**: [Zhang, R., Wang, Y., Wang, C., Sun, X., & Mergny, J. L. (2024). G-quadruplexes as pivotal components of cis-regulatory elements in the human genome. BMC biology, 22(1), 177.](https://doi.org/10.1186/s12915-024-01971-5)<br><br>
 
 **Citations**:<br>
 [1] Puig Lombardi, Emilia, and Arturo Londoño-Vallejo. “A guide to computational methods for G-quadruplex prediction.” Nucleic acids research vol. 48,1 (2020): 1-15. doi:10.1093/nar/gkz1097<br>
